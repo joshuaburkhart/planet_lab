@@ -1,2 +1,1 @@
 ./pssh -h ../../planet_lab/hosts.txt -l uoregon_cdn -i "sudo yum -y install hping3"
-cat testFile-1.txt | grep -Po '(?<=Crawling).+(?=\.\.\.\.)'
