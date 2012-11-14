@@ -1,1 +1,2 @@
 ./pssh -h ../../planet_lab/hosts.txt -l uoregon_cdn -i "sudo yum -y install hping3"
+./pscp -h ../../planet_lab/pl_hostnames.txt -l uoregon_cdn ../../cdn_mon/test/espn_sample_uri_list.txt /home/uoregon_cdn/
