@@ -1,2 +1,6 @@
-./pssh -h ../../planet_lab/hosts.txt -l uoregon_cdn -i "sudo yum -y install hping3"
-./pscp -h ../../planet_lab/pl_hostnames.txt -l uoregon_cdn ../../cdn_mon/test/espn_sample_uri_list.txt /home/uoregon_cdn/
+pssh -h ~/Software_Projects/CIS_630/planet_lab/pl_hostnames.txt -l uoregon_cdn -O StrictHostKeyChecking=no -i "sudo yum -y install hping3"
+pssh -h ~/Software_Projects/CIS_630/planet_lab/pl_hostnames.txt -l uoregon_cdn -t 600 -O StrictHostKeyChe yum install -y bind-utils"
+pscp -h ~/Software_Projects/CIS_630/planet_lab/pl_hostnames.txt -l uoregon_cdn ~/Software_Projects/CIS_630/cdn_mon/test/espn_sample_uri_list.txt /home/uoregon_cdn/
+pscp -h ~/Software_Projects/CIS_630/planet_lab/pl_hostnames.txt -l uoregon_cdn ~/Software_Projects/CIS_630/cdn_mon/data_collector/measure_nodes.rb /home/uoregon_cdn/
+pssh -h ~/Software_Projects/CIS_630/planet_lab/pl_hostnames.txt -l uoregon_cdn -t 600 -O StrictHostKeyChecking=no -i "nohup sudo ruby measure_nodes.rb -r 10 -f /home/uoregon_cdn/espn_sample_uri_list.txt -o /home/uoregon_cdn/avg_rtts.csv &"
+pssh -h ~/Software_Projects/CIS_630/planet_lab/pl_hostnames.txt -l uoregon_cdn -o ~/Software_Projects/CIS_630/cdn_mon/test/remote_output/ -t 600 -O StrictHostKeyChecking=no -i "cat /home/uoregon_cdn/avg_rtts.csv"
